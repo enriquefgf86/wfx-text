@@ -1,0 +1,73 @@
+<div class="container mt-5 p-4">
+  <div class="container mt-5 pr-5">
+    <div class=" mb-4">
+      <mat-accordion class='col-lg-6 col-md-6 col-sm-12 col-xs-12 col-xl-6 acordion' style="border-radius:20px!important"
+        class='mb-5'>
+        <mat-expansion-panel class='col-lg-6 col-md-6 col-sm-12 col-xs-12 col-xl-6 acordion' style="border-radius:20px!important"
+          (opened)="panelOpenState1 = true" (closed)="panelOpenState1 = false">
+          <mat-expansion-panel-header class='acordion'>
+            <div class="row">
+              <mat-chip-list class='ml-2 '>
+                <mat-chip class='chipColor '>
+                  Tridimensional
+                </mat-chip>
+              </mat-chip-list>
+              <mat-panel-description class='ml-5 acordion'>
+                {{panelOpenState1 ? 'Close' : 'Toggle this'}}
+              </mat-panel-description>
+            </div>
+          </mat-expansion-panel-header>
+          <p>According with the area you are at, this map shows tridimensional views. Zoom it and enjoy!! </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <div class="container">
+
+          <div id='map' style='width: 400px; height: 300px;'></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container  mt-5 pr-5">
+    <div class="mb-4">
+      <mat-accordion class='col-lg-6 col-md-6 col-sm-12 col-xs-12 col-xl-6 acordion' style="border-radius:20px!important">
+
+        <mat-expansion-panel class='col-lg-6 col-md-6 col-sm-12 col-xs-12 col-xl-6 acordion' style="border-radius:20px!important"
+          (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <div class="row">
+              <mat-chip-list class='ml-2 acordion'>
+                <mat-chip class='chipColor'>
+                  Point to point
+                </mat-chip>
+              </mat-chip-list>
+              <mat-panel-description class='ml-5 acordion'>
+                {{panelOpenState ? 'Close' : 'Toggle this'}}
+              </mat-panel-description>
+            </div>
+
+          </mat-expansion-panel-header>
+          <p>I this map is possible to set latitude and longitude to search a new position. Give a Try!! </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+
+    <div class="row ">
+      <div class="col">
+        <div class="container">
+          <div id='map1' style='width: 400px; height: 300px;'></div>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+
+  </div>
+

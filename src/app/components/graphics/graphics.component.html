@@ -1,0 +1,33 @@
+<div class='container mt-5'>
+  <div class='container'>
+    <div class='row'>
+      <div class="container col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12 mt-5 mb-4">
+        <mat-chip-list >
+          <mat-chip class="chipColor">Continents Represented by Percentage</mat-chip>
+        </mat-chip-list>
+        <div class='mt-5'>
+          <div class="chart">
+            <canvas baseChart [data]="pieChartData " [labels]="pieChartLabels" [chartType]="pieChartType"
+              [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+              [legend]="pieChartLegend">
+            </canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="container col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12 mt-5 mb-4">
+        <mat-chip-list >
+          <mat-chip class="chipColor">Latitude and Longitude By Country</mat-chip>
+        </mat-chip-list>
+        <div class='mt-5'>
+          <div>
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+              [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

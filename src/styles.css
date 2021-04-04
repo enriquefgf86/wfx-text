@@ -1,1 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.side-nav-left {
+  position: fixed !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background: rgba(57, 100, 195, 0.2);
+}
+
+.side-nav-content {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: calc(100% - 60px);
+  padding: 30px;
+  overflow: auto;
+  overflow-y: none;
+  box-shadow: 0 2px 14px 0 rgba(130, 130, 130, 0.5);
+  background: #fff;
+  color: #555555 !important;
+}
+
+/* .backdrop {
+  position: fixed !important;
+  z-index: 1001;
+  height: 100%;
+  width: 100%;
+} */
+
+.mat-drawer {
+  box-shadow: unset !important;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.imgLikeIcon {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  margin-top: -10px;
+}
+.btn-group {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  margin-left: 10% !important;
+  flex-wrap: wrap !important;
+}
+.btn-menu {
+  margin-left: 12% !important;
+}
+.left-btn {
+  position: relative !important;
+  margin-left: 70% !important;
+  margin-top: -10% !important;
+}
+.baseline {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+#map,
+#map1 {
+  position: relative !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+}
+
+.miniMap {
+  width: 90%;
+}
+
+.tableColor {
+  background-color: rgba(174, 214, 241, 0.2) !important;
+  border-radius: 20px !important;
+}
+
+.tableHeadColor,
+.chipColor {
+  background-color: rgba(174, 214, 241, 0.8) !important;
+  border-radius: 20px !important;
+}
+
+.chipColor1{
+  background-color: rgba(174, 214, 241) !important;
+}
+
+
+.acordion {
+  background-color: rgba(235, 245, 251, 0.8) !important;
+}
+
+#myVideo {
+  position: fixed;
+  z-index: -7;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+.buttonPoss {
+position:absolute;
+  margin-top:50%;
+  margin-left:50%
+}
+.content {
+  position: fixed;
+  z-index: -1;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(255,255,255, 0.8);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}

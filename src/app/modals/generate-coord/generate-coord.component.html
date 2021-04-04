@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="coordForm" (ngSubmit)="createCoord()">
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Title</mat-label>
+              <input formControlName="title" type="text" matInput placeholder="Set a Title">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Content</mat-label>
+              <textarea formControlName="content" type="text" matInput placeholder="Set a description"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Latitude</mat-label>
+              <input formControlName="lat" type="number" matInput placeholder="Latituded. e.g 45.607">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="example-full-width">
+              <mat-label>Longitude</mat-label>
+              <input formControlName="long" type="number" matInput placeholder="Longituded. e.g 5.607">
+            </mat-form-field>
+          </div>
+        </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col d-flex flex-row justify-content-around ">
+      <button color='primary' mat-raised-button mat-dialog-close routerLink='/pages/page2' type='submit' [disabled]='coordForm.invalid'>Ok</button>
+      <button color='secondary' mat-raised-button mat-dialog-close  >Cancel</button>
+
+    </div>
+  </div>
+</div>
+
+      </form>
+
+
+    </div>
+  </div>
+
+</div>

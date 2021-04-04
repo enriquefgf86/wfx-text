@@ -1,0 +1,55 @@
+<div class="container" *ngIf="postFormerData.length>0">
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="postUpdatedForm" (ngSubmit)="upDatepost()">
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input formControlName="title" type="text" matInput [placeholder]="postFormerData[0].title">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="example-full-width">
+                <mat-label>Content</mat-label>
+                <textarea formControlName="content" type="text" matInput [placeholder]="postFormerData[0].content"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="example-full-width">
+                <mat-label>Latitude</mat-label>
+                <input formControlName="lat" type="number" matInput [placeholder]="postFormerData[0].lat">
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="example-full-width">
+                <mat-label>Longitude</mat-label>
+                <input formControlName="long" type="number" matInput [placeholder]="postFormerData[0].long">
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="container">
+            <div class="row">
+              <div class="col d-flex flex-row justify-content-around ">
+                <button color='primary'  mat-raised-button mat-dialog-close type='submit'>Ok</button>
+                <button color='secondary' mat-raised-button mat-dialog-close >Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+  
+      </div>
+    </div>
+  
+  </div>
+  
