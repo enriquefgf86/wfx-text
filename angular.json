@@ -131,8 +131,5 @@
       }
     }
   },
-  "glob": "_redirects",
-  "input": "src",
-  "output": "/",
   "defaultProject": "front"
 }
