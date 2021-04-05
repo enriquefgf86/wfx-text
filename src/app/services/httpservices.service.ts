@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {
   PostModel,
   GeocodingObject,
@@ -27,7 +28,7 @@ const headersGeo = {
 export class HttpservicesService {
   allGeoCoordinates: GeocodingObject[] = [];
 
-  constructor(private http: HttpClient, private store: Store<GlobalAppState>) {}
+  constructor(private http: HttpClient, private store: Store<GlobalAppState>,private router:Router) {}
 
   //getting all posts
   //=============================================
@@ -44,6 +45,7 @@ export class HttpservicesService {
       .then((log) => {
         // console.log(log);
         this.store.dispatch(postActions.gettingAllPostsOrder());
+        this.router.navigate(['pages/page2'])
       });
   }
 

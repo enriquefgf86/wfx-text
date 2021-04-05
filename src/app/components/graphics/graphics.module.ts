@@ -5,11 +5,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartsModule } from 'ng2-charts';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
   declarations: [GraphicsComponent],
-  imports: [CommonModule, RouterModule,NgxChartsModule,ChartsModule,MatChipsModule
+  imports: [CommonModule, RouterModule,MatSnackBarModule,NgxChartsModule,ChartsModule,MatChipsModule
    ],
   exports: [GraphicsComponent],
 })

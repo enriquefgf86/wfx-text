@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDialogModule,
     GenerateCoordModule,
     TablesModule,
-    MatExpansionModule
+    MatExpansionModule,MatSnackBarModule
 
   ],
   exports: [

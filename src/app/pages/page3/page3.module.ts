@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GraphicsModule } from '../../components/graphics/graphics.module';
 import { ChartsModule } from 'ng2-charts';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [Page3Component],
@@ -19,6 +20,7 @@ import { ChartsModule } from 'ng2-charts';
     GraphicsModule,
     ChartsModule,
     MatChipsModule,
+    MatSnackBarModule
   ],
   exports: [Page3Component],
 })

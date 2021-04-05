@@ -8,17 +8,23 @@ import { ChartType, ChartDataSets, ChartOptions } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Subscription } from 'rxjs';
-import *as postActions from  '../../redux/postActions.actions'
+import * as postActions from '../../redux/postActions.actions';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-graphics',
   templateUrl: './graphics.component.html',
   styleUrls: ['./graphics.component.css'],
 })
-export class GraphicsComponent implements OnInit, AfterViewInit,OnDestroy {
+export class GraphicsComponent implements OnInit, AfterViewInit, OnDestroy {
   dataSource: GeocodingObject[] = [];
   byContinents: any[] = [];
-  subscriptionRedux:Subscription;
+  subscriptionRedux: Subscription;
+  subscriptio1: Subscription;
   //pie
   pieChartOptions: ChartOptions = {
     responsive: true,
@@ -66,14 +72,46 @@ export class GraphicsComponent implements OnInit, AfterViewInit,OnDestroy {
   barChartPlugins = [pluginDataLabels];
   barChartData: ChartDataSets[] = [];
 
+  horizontalPosition1: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition1: MatSnackBarVerticalPosition = 'top';
+  message1: string =
+    'Here all referring to charts and its reactive interaction with the reverse geolocation API from BigDataCloud';
+  duration1: number = 5000;
+  message2: string =
+    'This Chart exposes the percentage of data represented on each continent.';
+    message3: string =
+    'This Bars Chart set for every country retrieve in the data its latitude and longitude';
+  duration2: number = 5000;
+  action: string = 'Info!!';
   constructor(
     private store: Store<GlobalAppState>,
     private http: HttpservicesService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   async ngOnInit() {
-    this.subscriptionRedux=await this.gettingGeo();
+   this.openSnackBar(
+      this.message1,
+      this.action,
+      this.horizontalPosition1,
+      this.verticalPosition1,
+      this.duration1,''
+    ).afterDismissed().toPromise().then(()=>{
+      this.openSnackBarCustom(
+        this.message2,
+        this.action,
+        this.duration2,'custom1'
+      ).afterDismissed().toPromise().then(()=>{
+        this.openSnackBarCustom(
+          this.message3,
+          this.action,
+          this.duration2,'custom2'
+        );
+      });
+    });
+
+    this.subscriptionRedux = await this.gettingGeo();
     await Promise.all([(this.pieChartData = []), (this.barChartData = [])]);
 
     const [barData, dataSourceGrouped] = await Promise.all([
@@ -93,9 +131,8 @@ export class GraphicsComponent implements OnInit, AfterViewInit,OnDestroy {
   }
 
   ngAfterViewInit(): void {}
-  ngOnDestroy(){
-this.subscriptionRedux.unsubscribe()
-
+  ngOnDestroy() {
+    this.subscriptionRedux.unsubscribe();
   }
 
   //Proper of Chart
@@ -110,7 +147,7 @@ this.subscriptionRedux.unsubscribe()
     // console.log(event, active);
   }
 
-    //Proper of Chart
+  //Proper of Chart
   //=============================================
   public chartHovered({
     event,
@@ -122,8 +159,8 @@ this.subscriptionRedux.unsubscribe()
 
   //getting data fror redux charts
   //=============================================
-  async  gettingGeo() {
-   await  this.store.dispatch(postActions.gettingAllPostsOrder())
+  async gettingGeo() {
+    await this.store.dispatch(postActions.gettingAllPostsOrder());
     return this.store.select('postReducers').subscribe(async (data) => {
       this.dataSource = await data.allReverseGeo;
     });
@@ -149,6 +186,34 @@ this.subscriptionRedux.unsubscribe()
         ],
         label: element.countryName,
       };
+    });
+  }
+
+  openSnackBar(
+    message: string,
+    action: string,
+    hPosition: MatSnackBarHorizontalPosition,
+    vPosition: MatSnackBarVerticalPosition,
+    duration: number,
+    classCss:string
+  ) {
+   return this._snackBar.open(message, action, {
+      duration: duration,
+      horizontalPosition: hPosition,
+      verticalPosition: vPosition,
+      panelClass:classCss
+    });
+  }
+
+  openSnackBarCustom(
+    message: string,
+    action: string,
+    duration: number,
+    classCss:string
+  ) {
+   return this._snackBar.open(message, action, {
+      duration: duration,
+      panelClass:classCss
     });
   }
 }

@@ -14,6 +14,7 @@ import {
   NgbPaginationModule,
   NgbAlertModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [TablesComponent],
@@ -30,6 +31,7 @@ import {
     MatChipsModule,
     NgbPaginationModule,
     NgbAlertModule,
+    MatSnackBarModule
   ],
   exports: [
     TablesComponent,

@@ -9,6 +9,11 @@ import { MatDialog } from '@angular/material/dialog';
 import * as postActions from '../../redux/postActions.actions';
 import { Subscription } from 'rxjs';
 import { GenerateCoordComponent } from '../../modals/generate-coord/generate-coord.component';
+import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tables',
@@ -45,26 +50,35 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   suscriber: Subscription;
   suscriber2: Subscription;
+
+  horizontalPosition7: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition7: MatSnackBarVerticalPosition = 'bottom';
+  action:string='Info'
+  message7: string =
+    'This table is powered by ng-bootstrap, providing features like row toggle in order to display extra data';
+  duration7: number = 7000;
   constructor(
     private http: HttpservicesService,
     private route: Router,
     private store: Store<GlobalAppState>,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) {
-    this.refreshCountries();
   }
 
   ngOnInit() {
     //Effect in order to get all posts
     this.store.dispatch(postActions.gettingAllPostsOrder());
+
+    this.openSnackBar(this.message7,this.action,this.horizontalPosition7,this.verticalPosition7,this.duration7,'')
   }
 
   ngAfterViewInit() {
     this.suscriber = this.getAllPosts();
     this.http.getAllReverseGeocodings();
-    setTimeout(() => {
-      this.refreshCountries();
-    }, 1000);
+    // setTimeout(() => {
+    //   this.refreshCountries();
+    // }, 1500);
   }
 
   ngOnDestroy() {
@@ -95,14 +109,14 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
 
   //table pages paginator logic
   //=============================================================
-  refreshCountries() {
-    return (this.countries = this.collapsable
-      .map((country, i) => ({ counter: i + 1, expanded: false, ...country }))
-      .slice(
-        (this.page - 1) * this.pageSize,
-        (this.page - 1) * this.pageSize + this.pageSize
-      ));
-  }
+  // refreshCountries() {
+  //   return (this.countries = this.collapsable
+  //     .map((country, i) => ({ counter: i + 1, expanded: false, ...country }))
+  //     .slice(
+  //       (this.page - 1) * this.pageSize,
+  //       (this.page - 1) * this.pageSize + this.pageSize
+  //     ));
+  // }
 
   //table expansion helper
   //=============================================================
@@ -129,5 +143,21 @@ export class TablesComponent implements OnInit, AfterViewInit, OnDestroy {
   //=============================================================
   openCreateCoord() {
     const dialogRef = this.dialog.open(GenerateCoordComponent);
+  }
+
+  openSnackBar(
+    message: string,
+    action: string,
+    hPosition: MatSnackBarHorizontalPosition,
+    vPosition: MatSnackBarVerticalPosition,
+    duration: number,
+    classCss: string
+  ) {
+    return this._snackBar.open(message, action, {
+      duration: duration,
+      horizontalPosition: hPosition,
+      verticalPosition: vPosition,
+      panelClass: classCss,
+    });
   }
 }

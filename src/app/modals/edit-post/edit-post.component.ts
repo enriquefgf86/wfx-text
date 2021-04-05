@@ -79,8 +79,6 @@ export class EditPostComponent implements OnInit {
     let postToEdit:PostModel={id,title,content,lat,long,image_url,created_at,updated_at};
 
     this.http.editAPost(this.data.postId.toString(),postToEdit)
-    // .then(()=>this.store.dispatch(postActions.gettingAllPostsOrder()));
 
-    this.router.navigate([`/pages/page4/${id}`])
   }
 }

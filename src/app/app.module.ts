@@ -38,6 +38,8 @@ import { ChartsModule } from 'ng2-charts';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { AngularFireModule } from '@angular/fire';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgxDatatableModule,
     NgxChartsModule,
+    MatSnackBarModule,
     NgbPaginationModule, NgbAlertModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     StoreModule.forRoot(globalReducer, {
       runtimeChecks: {
         strictStateImmutability: false,

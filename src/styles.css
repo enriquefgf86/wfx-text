@@ -137,3 +137,25 @@ position:absolute;
   width: 100%;
   padding: 20px;
 }
+
+.custom1 {
+  left: 0 !important;
+  position: absolute;
+  top: 60%
+}
+
+.custom2 {
+  margin-right: 10% !important;
+  position: absolute;
+  top: 60%
+}
+.custom3 {
+  margin-right: 10% !important;
+  position: absolute;
+  top: 10%
+}
+.custom4 {
+  margin-right: 10% !important;
+  position: absolute;
+  top: 60%
+}

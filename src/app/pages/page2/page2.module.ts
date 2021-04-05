@@ -12,6 +12,7 @@ import {
   NgbAlertModule,
   NgbPaginationModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [Page2Component],
@@ -24,6 +25,7 @@ import {
     MatButtonModule,
     NgbPaginationModule,
     NgbAlertModule,
+    MatSnackBarModule,
     MatDialogModule,
     GenerateCoordModule,
     TablesModule,

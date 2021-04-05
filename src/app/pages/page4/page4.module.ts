@@ -8,11 +8,13 @@ import { Page4Component } from './page4.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
   declarations: [Page4Component],
-  imports: [CommonModule, RouterModule, Page4RoutingModule,MatExpansionModule,ComponentsModule,MyMapsModule,MatChipsModule,GraphicsModule],
+  imports: [CommonModule, RouterModule,MatSnackBarModule, Page4RoutingModule,MatExpansionModule,ComponentsModule,MyMapsModule,MatChipsModule,GraphicsModule],
   exports: [Page4Component],
 })
 export class Page4Module {}

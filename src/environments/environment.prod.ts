@@ -8,5 +8,13 @@ export const environment = {
   REVERSE_GEOCODING:
     'https://api.bigdatacloud.net/data/reverse-geocode?',
 
-    REVERSE_GEO_API_KEY:'93f8cbec828f40cfafdbaf8de900c92b'
+    REVERSE_GEO_API_KEY:'93f8cbec828f40cfafdbaf8de900c92b',
+    firebaseConfig : {
+      apiKey: "AIzaSyAIxxpnAzj1v_YV45OYYP9drm73rvS2soU",
+      authDomain: "wefox-test-enrique.firebaseapp.com",
+      projectId: "wefox-test-enrique",
+      storageBucket: "wefox-test-enrique.appspot.com",
+      messagingSenderId: "735708736655",
+      appId: "1:735708736655:web:4612d0eaf82476331c14fa"
+    }
 };
