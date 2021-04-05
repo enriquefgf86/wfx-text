@@ -29,13 +29,15 @@ import { MatTableModule } from '@angular/material/table';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { globalReducer } from './globalReducers.reducers';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { DataTablesModule } from 'angular-datatables';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { EffectsModule } from '@ngrx/effects';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartsModule } from 'ng2-charts';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -71,6 +73,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HttpClientModule,
     NgxDatatableModule,
     NgxChartsModule,
+    NgbPaginationModule, NgbAlertModule,
     StoreModule.forRoot(globalReducer, {
       runtimeChecks: {
         strictStateImmutability: false,
@@ -82,6 +85,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,4 @@
 <div class="table-responsive">
-  <!-- <ngx-datatable [rows]="rows" [columns]="columns"> </ngx-datatable> -->
   <table class="table  table-striped tableColor mt-4" >
     <thead  class="tableHeadColor">
       <tr>
@@ -7,31 +6,28 @@
       </tr>
     </thead>
     <tbody class='text-center'>
-      <ng-container *ngFor="let obj of collapsable;let i=index" data-toggle="collapse" data-target="#demo"
+      <ng-container *ngFor="let obj of countries;let i=index" data-toggle="collapse" data-target="#demo"
         class="accordion-toggle">
-        <tr>
+        <tr >
           <td class='d-flex justify-content-center'>{{obj.title}}</td>
-          <!-- <td>{{obj.created_at|date:'dd/MM/yyyy'}}</td>
-          <td  class='d-flex flex-row'>{{obj.updated_at|date:'dd/MM/yyyy'}} -->
-
-          <!-- </td> -->
           <td>{{obj.content}}</td>
-          <td class='d-flex flex-row'>
+          <td class='d-flex flex-row justify-content-center'>
             <button mat-icon-button>
               <mat-icon (click)="obj.expanded = !obj.expanded" *ngIf="!obj.expanded"><img src="../../../assets/down.svg"
                   class='imgLikeIcon' alt="arrow">
               </mat-icon>
+
               <mat-icon (click)="obj.expanded = !obj.expanded" *ngIf="obj.expanded"><img src="../../../assets/up.svg"
                   class='imgLikeIcon' alt="arrow">
               </mat-icon>
             </button>
-            <button mat-icon-button>
-              <mat-icon [id]='obj.id' (click)="delete($event)"><img src="../../../assets/bin.png"
+            <button mat-icon-button >
+              <mat-icon  ><img (click)="delete($event)" [id]='obj.id' src="../../../assets/bin.png"
                 class='imgLikeIcon' alt="arrow"></mat-icon>
             </button>
             <button mat-icon-button>
-              <mat-icon [id]='obj.id' (click)="openEditPost($event)">
-                <img src="../../../assets/edit.png"
+              <mat-icon >
+                <img [id]='obj.id' (click)="openEditPost($event)" src="../../../assets/edit.png"
                   class='imgLikeIcon' alt="arrow">
               </mat-icon>
             </button>
@@ -109,11 +105,23 @@
           <!-- <td>{{obj.content}}</td> -->
           </tr>
         </ng-container>
-
-
-
       </ng-container>
 
 
     </tbody>
   </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+
+    <button mat-raised-button class='buttonPoss chipColor1' (click)="openCreateCoord()">Add Post</button>
+
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="2">2 items per page</option>
+      <option [ngValue]="4">4 items per page</option>
+      <option [ngValue]="6">6 items per page</option>
+      <option [ngValue]="7">7 items per page</option>
+      <option [ngValue]="10">10 items per page</option>
+    </select>
+  </div>

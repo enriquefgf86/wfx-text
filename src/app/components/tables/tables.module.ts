@@ -10,6 +10,10 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { DataTablesModule } from 'angular-datatables';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import {
+  NgbPaginationModule,
+  NgbAlertModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [TablesComponent],
@@ -24,6 +28,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MatDialogModule,
     EditPostModule,
     MatChipsModule,
+    NgbPaginationModule,
+    NgbAlertModule,
   ],
   exports: [
     TablesComponent,
@@ -35,7 +41,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MatDialogModule,
     EditPostModule,
     RouterModule,
-    MatChipsModule
+    MatChipsModule,
   ],
 })
 export class TablesModule {}

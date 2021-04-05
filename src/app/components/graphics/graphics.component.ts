@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { GeocodingObject } from './../../interfaces/interfaces';
-import { HttpservicesService } from 'src/app/services/httpservices.service';
+import { HttpservicesService } from '../../services/httpservices.service';
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
-import { GlobalAppState } from 'src/app/globalReducers.reducers';
+import { GlobalAppState } from '../../globalReducers.reducers';
 import { Store } from '@ngrx/store';
 import { ChartType, ChartDataSets, ChartOptions } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
@@ -95,10 +95,11 @@ export class GraphicsComponent implements OnInit, AfterViewInit,OnDestroy {
   ngAfterViewInit(): void {}
   ngOnDestroy(){
 this.subscriptionRedux.unsubscribe()
-console.log("unsuscribed graphics");
 
   }
 
+  //Proper of Chart
+  //=============================================
   public chartClicked({
     event,
     active,
@@ -106,9 +107,11 @@ console.log("unsuscribed graphics");
     event: MouseEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
+    //Proper of Chart
+  //=============================================
   public chartHovered({
     event,
     active,
@@ -117,15 +120,17 @@ console.log("unsuscribed graphics");
     active: {}[];
   }): void {}
 
-  //getting de data from redux for charts
- async  gettingGeo() {
+  //getting data fror redux charts
+  //=============================================
+  async  gettingGeo() {
    await  this.store.dispatch(postActions.gettingAllPostsOrder())
     return this.store.select('postReducers').subscribe(async (data) => {
       this.dataSource = await data.allReverseGeo;
     });
   }
 
-  //grouping by continents for pie chart
+  //Continents grouping for pie chart
+  //=============================================
   groupGeoByContinent(array: GeocodingObject[]) {
     return array.reduce((r, a) => {
       r[a.continent] = r[a.continent] || [];

@@ -43,9 +43,10 @@ export class NavbarComponent implements OnInit {
  async ngOnInit() {
 
    await  this.navbarSelecter()
-    console.log(this.pages)
   }
 
+    //NavBar filter
+  //=============================================
  async navbarSelecter(){
    let pages: PageRouting[] =await  [
       {        route: '/pages/page1',
@@ -67,13 +68,13 @@ export class NavbarComponent implements OnInit {
       },
     ];
     this.pages=await []
-  
+
     pages.forEach(element => {
       if(element.route!=this.location.path()){
         this.pages.push(element)
       }
     });
      return this.pages
-    
+
   }
 }

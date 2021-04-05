@@ -6,20 +6,28 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TablesModule } from 'src/app/components/tables/tables.module';
-import { GenerateCoordModule } from 'src/app/modals/generate-coord/generate-coord.module';
-
-
+import { TablesModule } from '../../components/tables/tables.module';
+import { GenerateCoordModule } from '../../modals/generate-coord/generate-coord.module';
+import {
+  NgbAlertModule,
+  NgbPaginationModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [Page2Component],
   imports: [
-    CommonModule,RouterModule,Page2RoutingModule,FormsModule,ReactiveFormsModule, MatButtonModule,
+    CommonModule,
+    RouterModule,
+    Page2RoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    NgbPaginationModule,
+    NgbAlertModule,
     MatDialogModule,
     GenerateCoordModule,
     TablesModule,
-
   ],
-  exports:[Page2Component]
+  exports: [Page2Component],
 })
-export class Page2Module { }
+export class Page2Module {}

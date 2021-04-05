@@ -7,6 +7,8 @@ export interface PostModel {
   image_url?: string;
   created_at?: string;
   updated_at?: string;
+  expanded?:Boolean
+
 }
 
 export interface PostModelCollapsable {
@@ -19,6 +21,7 @@ export interface PostModelCollapsable {
   created_at?: string;
   updated_at?: string;
   expanded:Boolean
+  counter?:number
 }
 
 export interface PageRouting {

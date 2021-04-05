@@ -4,7 +4,7 @@ import { GenerateCoordComponent } from './../../modals/generate-coord/generate-c
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { GlobalAppState } from 'src/app/globalReducers.reducers';
+import { GlobalAppState } from '../../globalReducers.reducers';
 import * as postActions from '../../redux/postActions.actions'
 
 
@@ -27,27 +27,24 @@ export class Page1Component implements OnInit ,AfterViewInit{
   ngOnInit(): void {
         //Effect in order to get all posts
         this.store.dispatch(postActions.gettingAllPostsOrder())
-        console.log(this.panelOpenStateHome);
-        
-
   }
 
   ngAfterViewInit() {
     this.http.getAllReverseGeocodings()
   }
 
+  //Opening modal
+  //=============================================
   openCreateCoord() {
     const dialogRef = this.dialog.open(GenerateCoordComponent);
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
   }
 
+    //Panel Display
+  //=============================================
   clickOpen(){
     this.panelOpenStateHome=!this.panelOpenStateHome
 
-    console.log(this.panelOpenStateHome);
-    
+    // console.log(this.panelOpenStateHome);
+
   }
 }

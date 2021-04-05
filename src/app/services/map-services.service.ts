@@ -12,6 +12,7 @@ export class MapService {
   }
 
   //creating map 1
+  //=============================================
   mapTrigger(lat, lng) {
     mapboxgl.accessToken = environment.MAPBOX_TOKEN;
     var map = new mapboxgl.Map({
@@ -113,6 +114,7 @@ export class MapService {
   }
 
   // creating map2
+  //=============================================
   mapTrigger1(lat, lng) {
     mapboxgl.accessToken = environment.MAPBOX_TOKEN;
     var map = new mapboxgl.Map({

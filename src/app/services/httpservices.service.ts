@@ -1,4 +1,8 @@
-import { PostModel, GeocodingObject } from './../interfaces/interfaces';
+import {
+  PostModel,
+  GeocodingObject,
+  PostModelCollapsable,
+} from './../interfaces/interfaces';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -26,6 +30,7 @@ export class HttpservicesService {
   constructor(private http: HttpClient, private store: Store<GlobalAppState>) {}
 
   //getting all posts
+  //=============================================
   getAllCurrentPosts() {
     return this.http.get<PostModel[]>(api, { headers: headers });
   }
@@ -37,46 +42,50 @@ export class HttpservicesService {
       .post<PostModel>(api, body, { headers: headers })
       .toPromise()
       .then((log) => {
-        console.log(log);
+        // console.log(log);
         this.store.dispatch(postActions.gettingAllPostsOrder());
       });
   }
 
   //deleting post
+  //=============================================
   async deleteAPost(postObjectId: string) {
     return this.http
       .delete(`${api}/${postObjectId}`, { headers: headers })
       .toPromise()
       .then((log) => {
-        console.log(log);
+        // console.log(log);
         this.store.dispatch(postActions.gettingAllPostsOrder());
       });
   }
 
   //editing post
+  //=============================================
   async editAPost(postId: string, postObject: PostModel) {
     const body = JSON.stringify(postObject);
 
-    this.http
+    return this.http
       .put<PostModel>(`${api}/${postId}`, body, { headers: headers })
       .toPromise()
       .then((log) => {
-        console.log(log);
+        // console.log(log);
         this.store.dispatch(postActions.gettingAllPostsOrder());
       });
   }
 
   //get post by id
+  //=============================================
   getAPost(postId: string) {
     return this.http.get<PostModel>(`${api}/${postId}`, { headers: headers });
   }
 
   //getting reverse geocoding for places
+  //=============================================
   async getAllReverseGeocodings() {
     let array = await [];
 
-     this.store.select('postReducers').subscribe(async (data) => {
-       Object.values(data.allPosts).forEach((post) => {
+    this.store.select('postReducers').subscribe(async (data) => {
+      Object.values(data.allPosts).forEach((post) => {
         this.http
           .get<GeocodingObject>(
             `${reverseGeoCodingApi}latitude=${post.lat}&longitude=${post.long}&localityLanguage=en&key=${reverseGeoCodingApiKey}`,
@@ -85,30 +94,35 @@ export class HttpservicesService {
           .toPromise()
           .then((result) => {
             array.push(result);
-          //  this.repeatedObjectsCleaner(array)
-            
+            //  this.repeatedObjectsCleaner(array)
           });
       });
     });
-    setTimeout(async() => {
-      console.log(array);
-      await this.repeatedObjectsCleaner(array)
+    setTimeout(async () => {
+      await this.repeatedObjectsCleaner(array);
     }, 1000);
   }
 
-  //setting in redux array of unique objects fucntion 
-  repeatedObjectsCleaner(array:GeocodingObject[]){
-   let x= array.reduce((unique,comparator)=>{
-      if(!unique.some(obj=>obj.latitude===comparator.latitude&&obj.longitude===comparator.longitude)){
-        unique.push(comparator)
+  //setting in redux array of unique objects fucntion
+  //=============================================
+  repeatedObjectsCleaner(array: GeocodingObject[]) {
+    let x = array.reduce((unique, comparator) => {
+      if (
+        !unique.some(
+          (obj) =>
+            obj.latitude === comparator.latitude &&
+            obj.longitude === comparator.longitude
+        )
+      ) {
+        unique.push(comparator);
       }
       return unique;
-    },[])
+    }, []);
 
     this.store.dispatch(
-        postActions.getAllReverseGeocoding({
-          allRevGeoRetrieved:x,
-        })
-      );
+      postActions.getAllReverseGeocoding({
+        allRevGeoRetrieved: x,
+      })
+    );
   }
 }

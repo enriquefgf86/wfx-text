@@ -23,8 +23,6 @@ export class PostEffects {
     )
   );
 
-
-
   @Effect({ dispatch: false })
   createAPostsEffect = this.actionObservable$.pipe(
     ofType(postActions.createAPost),

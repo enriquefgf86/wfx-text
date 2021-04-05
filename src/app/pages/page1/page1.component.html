@@ -1,32 +1,56 @@
 <div class="container mt-5 p-4 page1">
 
-  
+  <mat-expansion-panel hideToggle (opened)="panelOpenStateHome = true" (closed)="panelOpenStateHome = false"
+    style='border-radius:15px!important'>
 
-  <mat-expansion-panel hideToggle (opened)="panelOpenStateHome = true" (closed)="panelOpenStateHome = false" style='border-radius:15px!important'>
-    
     <mat-expansion-panel-header>
-      <button mat-mini-fab *ngIf="!panelOpenStateHome" (click)="clickOpen()" class="chipColor1" aria-label="Example icon button with a menu icon">
+      <button mat-mini-fab *ngIf="!panelOpenStateHome" (click)="clickOpen()" class="chipColor1"
+        aria-label="Example icon button with a menu icon">
         <mat-icon>file_download</mat-icon>
       </button>
 
-      <button *ngIf="panelOpenStateHome" mat-mini-fab (click)="clickOpen()" class="chipColor1" aria-label="Example icon button with a menu icon">
+      <button *ngIf="panelOpenStateHome" mat-mini-fab (click)="clickOpen()" class="chipColor1"
+        aria-label="Example icon button with a menu icon">
         <mat-icon>file_upload</mat-icon>
       </button>
       <mat-panel-description>
         This is a summary of the content
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>This project is settled in Angular , using Angular Material,CSS3 and Botstrap as helpers for user
-      experience</p>
-    <p>Redux and Ngrx Effects are used in a basic way in order to handle the state  persistence </p>
-    <p>Lazy Load of components and views through a router provided by Angular is other feature </p>
-    <p>A Table with real time updating  offers more information about the data , allowing the user to apply  a basic CRUD, being able to modify, delete , create , or retrieve information.
-      <p>Charts interacting with data  is also implemented</p>
-     <p> All this is possible for a Application Programming Interface (API) provided by a third source  through a docker image/container/yml.</p>
-   
-    <p>Also as complementary  APIs were used MapBox adn GeoBigDataCloud ones in the implemantation of embeded maps, and inverse geolocation; offering an extra feature the user could  explore</p>
-    <p>Have fun  !!</p>
-    <p>  <button mat-raised-button class='buttonPoss chipColor1' (click)="openCreateCoord()">Add Post</button>
+    <ul>
+      <li>
+        <p>This project is settled in Angular , using Angular Material, CSS3 and Botstrap as helpers for user
+          experience</p>
+      </li>
+      <li>
+        <p>Redux and Ngrx Effects are used in a basic way in order to handle the state persistence, being accessible to
+          all components in the project in a reactive process </p>
+      </li>
+
+      <li>
+        <p>Lazy Load of components and views through a router provided by Angular is other feature. </p>
+      </li>
+
+      <li>
+        <p>A Table with real time updating offers more information about the data, allowing the user to apply a basic
+          CRUD, being able to modify, delete, create, or retrieve information.
+      </li>
+      <li>
+        <p>Charts interacting with data are also implemented</p>
+      </li>
+      <li>
+        <p> All this is possible for a Application Programming Interface (API) provided by a third source through a
+          docker image/container/yml.</p>
+      </li>
+
+      <li>
+        <p>Also as complementary APIs were used MapBox adn GeoBigDataCloud ones in the implementation of embeded maps,
+          and inverse geolocation; offering an extra feature the user could explore</p>
+      </li>
+    </ul>
+
+    <p>Have fun !!</p>
+    <p> <button mat-raised-button class='buttonPoss chipColor1' (click)="openCreateCoord()">Add Post</button>
     </p>
 
 
@@ -34,8 +58,8 @@
   </mat-expansion-panel>
   <div class="content">
   </div>
+</div>
 
-
-  <video autoplay  muted loop id="myVideo">
-    <source src="../../../assets/video.mp4" type="video/mp4">
-  </video>
+<video autoplay muted loop id="myVideo">
+  <source src="../../../assets/video.mp4" type="video/mp4">
+</video>

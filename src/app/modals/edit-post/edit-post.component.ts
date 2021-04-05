@@ -1,11 +1,12 @@
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, Inject, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { GlobalAppState } from 'src/app/globalReducers.reducers';
-import { PostModel } from 'src/app/interfaces/interfaces';
-import { HttpservicesService } from 'src/app/services/httpservices.service';
+import { GlobalAppState } from '../../globalReducers.reducers';
+import { PostModel } from '../../interfaces/interfaces';
+import { HttpservicesService } from '../../services/httpservices.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-post',
@@ -22,7 +23,8 @@ export class EditPostComponent implements OnInit {
     public dialogRef: MatDialogRef<EditPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { postId: number },
     public ngZone: NgZone,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -38,16 +40,20 @@ export class EditPostComponent implements OnInit {
     }
   }
 
+  //object selected by id
+  //=============================================================
   gettingObjectSelectedById(id) {
     this.store.select('postReducers').subscribe(async (data) => {
       this.postFormerData = await Object.values(data.allPosts).filter((obj) => {
         return obj.id == id;
       });
-      console.log(this.postFormerData);
+      // console.log(this.postFormerData);
     });
   }
 
- async  upDatepost() {
+  //updating post
+  //=============================================================
+  async  upDatepost() {
     let [{title,content,lat,long},created_at]=await Promise.all([
       this.postUpdatedForm.value,
       this.postFormerData[0].created_at
@@ -68,12 +74,13 @@ export class EditPostComponent implements OnInit {
     let updated_at=new Date('2011-11-01').toString();
 
     let image_url=`${environment.MAPBOX_STATIC_MAP_IMAGE}${lat},${long},8.08,0/300x200?access_token=${environment.MAPBOX_TOKEN}`;
-    
+
     let id=this.data.postId;
     let postToEdit:PostModel={id,title,content,lat,long,image_url,created_at,updated_at};
 
-    this.http.editAPost(this.data.postId.toString(),postToEdit);
+    this.http.editAPost(this.data.postId.toString(),postToEdit)
+    // .then(()=>this.store.dispatch(postActions.gettingAllPostsOrder()));
 
-    
+    this.router.navigate([`/pages/page4/${id}`])
   }
 }

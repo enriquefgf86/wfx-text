@@ -1,12 +1,10 @@
-import { HttpservicesService } from 'src/app/services/httpservices.service';
+import { HttpservicesService } from '../../services/httpservices.service';
 import { MapService } from './../../services/map-services.service';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
-import { PostModel } from 'src/app/interfaces/interfaces';
+import { ActivatedRoute } from '@angular/router';
+import { PostModel } from '../../interfaces/interfaces';
 import { Store } from '@ngrx/store';
-import { GlobalAppState } from 'src/app/globalReducers.reducers';
-import * as postActions from '../../redux/postActions.actions';
+import { GlobalAppState } from '../../globalReducers.reducers';
 
 declare var mapboxgl: any;
 @Component({
@@ -35,14 +33,15 @@ export class MyMapsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {}
 
-  //calling endpoint o unique post by id
+  //Calling map corresponding with the selected  post
+  //=============================================
   getSelectedPost(id) {
     this.http
       .getAPost(id)
       .toPromise()
       .then(async (result: PostModel) => {
         const [lat, lng] = await Promise.all([result.lat, result.long]);
-        console.log(result);
+        // console.log(result);
         this.lat = lat;
         this.lng = lng;
         //triggering maps 1 and 2

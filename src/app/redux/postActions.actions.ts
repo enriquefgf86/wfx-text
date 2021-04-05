@@ -14,8 +14,6 @@ export const gettingGeoOrder= createAction(
   '[Post] gettingGeoOrder'
 );
 
-
-
 export const getAllPost = createAction(
   '[Post] getAllPost',
   props<{ allPostsRetrieved: PostModel[] }>()

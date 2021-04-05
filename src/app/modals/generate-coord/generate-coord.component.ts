@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid';
 import { Store } from '@ngrx/store';
-import { GlobalAppState } from 'src/app/globalReducers.reducers';
+import { GlobalAppState } from '../../globalReducers.reducers';
 import * as postActions from '../../redux/postActions.actions';
 
 const imageStaticMapApi = environment.MAPBOX_STATIC_MAP_IMAGE;
@@ -33,9 +33,11 @@ export class GenerateCoordComponent implements OnInit {
       long: [, Validators.required],
     });
 
-    console.log(imageStaticMapApi);
+    // console.log(imageStaticMapApi);
   }
 
+  //New Post creator
+  //=============================================
   async createCoord() {
     //triggering in all promises some neccesary variables for the process
     const [
@@ -61,7 +63,7 @@ export class GenerateCoordComponent implements OnInit {
 
     let id = uuidv4(v4options);
 
-    console.log(image_url);
+    // console.log(image_url);
 
     //building the object to send for post creation
     let createdPost: PostModel = {
@@ -75,7 +77,7 @@ export class GenerateCoordComponent implements OnInit {
       updated_at,
     };
 
-    console.log(createdPost);
+    // console.log(createdPost);
 
     //Effect instead of calling the service
     this.store.dispatch(postActions.createAPost({ aPostCreated: createdPost }));
